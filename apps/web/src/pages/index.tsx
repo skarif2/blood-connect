@@ -3,6 +3,8 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { signIn, signOut } from "next-auth/react";
 
+import { Button } from "@acme/ui";
+
 import { api, type RouterOutputs } from "~/utils/api";
 
 const PostCard: React.FC<{
@@ -99,6 +101,7 @@ const Home: NextPage = () => {
           <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
             <span className="text-red-400">Blood</span> Connect
           </h1>
+          <Button>My Button</Button>
           <AuthShowcase />
 
           <CreatePostForm />
