@@ -1,0 +1,20 @@
+{
+  "name": "@acme/docs",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev --port 3002",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "next": "^13.4.4",
+    "nextra": "^2.7.1",
+    "nextra-theme-docs": "^2.7.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  }
+}
