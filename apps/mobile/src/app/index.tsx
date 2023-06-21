@@ -97,13 +97,12 @@ const Index = () => {
 
   return (
     <SafeAreaView className="bg-slate-800">
-      {/* Changes page title visible on the header */}
-      <Stack.Screen options={{ title: "Home Page" }} />
+      <Stack.Screen options={{ title: "Blood Connect" }} />
       <View className="h-full w-full p-4">
-        <Text className="mx-auto pb-2 text-5xl font-bold text-white">
-          <Text className="text-red-400">Blood</Text> Connect
+        <Text className="mx-auto pb-2 text-5xl font-bold text-foreground">
+          <Text className="text-accent">Blood</Text> Connect
         </Text>
-
+        <Text className="text-accent-foreground">Text Color</Text>
         {session?.user ? (
           <Text className="text-center text-2xl text-white">
             {session && <span>Logged in as {session?.user?.name}</span>}

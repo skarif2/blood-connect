@@ -10,7 +10,7 @@ import { TRPCProvider } from "~/utils/api";
 const RootLayout = () => {
   return (
     <TRPCProvider>
-      <SafeAreaProvider>
+      <SafeAreaProvider className="main">
         {/*
           The Stack component displays the current page.
           It also allows you to configure your screens 
