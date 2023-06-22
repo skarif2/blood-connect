@@ -21,14 +21,16 @@ module.exports = function (api) {
   process.env.EXPO_ROUTER_APP_ROOT = "../../apps/mobile/src/app";
 
   return {
-    presets: ["babel-preset-expo"],
-    plugins: [
+    presets: [
+      "babel-preset-expo",
       [
         "nativewind/babel",
         {
           tailwindConfig: lazyLoadConfig(),
         },
       ],
+    ],
+    plugins: [
       "expo-router/babel",
       ["module-resolver", { alias: { "~": "./src" } }],
     ],

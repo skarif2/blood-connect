@@ -1,10 +1,19 @@
 import React from "react";
-import { Button, Text, TextInput, TouchableOpacity, View } from "react-native";
+import {
+  Button,
+  KeyboardAvoidingView,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Stack, useRouter } from "expo-router";
 import { FlashList } from "@shopify/flash-list";
+import { Trash } from "lucide-react-native";
 
 import { api, type RouterOutputs } from "~/utils/api";
+import { ThemeToggle } from "~/components/ThemeToggle";
 
 const PostCard: React.FC<{
   post: RouterOutputs["post"]["all"][number];
@@ -13,17 +22,17 @@ const PostCard: React.FC<{
   const router = useRouter();
 
   return (
-    <View className="flex flex-row rounded-lg bg-white/10 p-4">
+    <View className="flex-1 flex-row items-center rounded-lg border border-border bg-card p-6 text-card-foreground">
       <View className="flex-grow">
         <TouchableOpacity onPress={() => router.push(`/post/${post.id}`)}>
-          <Text className="text-xl font-semibold text-red-400">
+          <Text className="space-y-1.5 text-xl font-semibold tracking-tight text-foreground">
             {post.title}
           </Text>
-          <Text className="mt-2 text-white">{post.content}</Text>
+          <Text className="text-sm text-muted-foreground">{post.content}</Text>
         </TouchableOpacity>
       </View>
       <TouchableOpacity onPress={onDelete}>
-        <Text className="font-bold uppercase text-red-400">Delete</Text>
+        <Trash className="text-muted-foreground" size={24} />
       </TouchableOpacity>
     </View>
   );
@@ -46,31 +55,29 @@ const CreatePost: React.FC = () => {
   return (
     <View className="mt-4">
       <TextInput
-        className="mb-2 rounded bg-white/10 p-2 text-white"
-        placeholderTextColor="rgba(255, 255, 255, 0.5)"
+        className="mb-2 rounded border border-input bg-secondary p-2 text-foreground"
         value={title}
         onChangeText={setTitle}
         placeholder="Title"
       />
       {error?.data?.zodError?.fieldErrors.title && (
-        <Text className="mb-2 text-red-500">
+        <Text className="mb-2 text-destructive">
           {error.data.zodError.fieldErrors.title}
         </Text>
       )}
       <TextInput
-        className="mb-2 rounded bg-white/10 p-2 text-white"
-        placeholderTextColor="rgba(255, 255, 255, 0.5)"
+        className="mb-2 rounded border border-input bg-secondary p-2 text-foreground"
         value={content}
         onChangeText={setContent}
         placeholder="Content"
       />
       {error?.data?.zodError?.fieldErrors.content && (
-        <Text className="mb-2 text-red-500">
+        <Text className="mb-2 text-destructive">
           {error.data.zodError.fieldErrors.content}
         </Text>
       )}
       <TouchableOpacity
-        className="rounded bg-red-400 p-2"
+        className="rounded bg-accent p-2"
         onPress={() => {
           mutate({
             title,
@@ -78,7 +85,7 @@ const CreatePost: React.FC = () => {
           });
         }}
       >
-        <Text className="font-semibold text-white">Publish post</Text>
+        <Text className="font-semibold text-gray-100">Publish Post</Text>
       </TouchableOpacity>
     </View>
   );
@@ -96,47 +103,54 @@ const Index = () => {
   });
 
   return (
-    <SafeAreaView className="bg-slate-800">
-      <Stack.Screen options={{ title: "Blood Connect" }} />
-      <View className="h-full w-full p-4">
-        <Text className="mx-auto pb-2 text-5xl font-bold text-foreground">
-          <Text className="text-accent">Blood</Text> Connect
-        </Text>
-        <Text className="text-accent-foreground">Text Color</Text>
-        {session?.user ? (
-          <Text className="text-center text-2xl text-white">
-            {session && <span>Logged in as {session?.user?.name}</span>}
+    <SafeAreaView className="h-full w-full bg-background">
+      <Stack.Screen
+        options={{
+          headerTitle: "Blood Connect",
+          headerRight: () => <ThemeToggle />,
+        }}
+      />
+      <KeyboardAvoidingView>
+        <View className="h-full w-full p-4">
+          <Text className="mx-auto pb-2 text-5xl font-bold text-foreground">
+            <Text className="text-accent">Blood</Text> Connect
           </Text>
-        ) : (
-          <Text className="text-center text-2xl text-white">Not logged in</Text>
-        )}
-
-        <Button
-          onPress={() => void utils.post.all.invalidate()}
-          title="Refresh posts"
-          color={"#f47272"}
-        />
-
-        <View className="py-2">
-          <Text className="font-semibold italic text-white">
-            Press on a post
-          </Text>
-        </View>
-
-        <FlashList
-          data={postQuery.data}
-          estimatedItemSize={20}
-          ItemSeparatorComponent={() => <View className="h-2" />}
-          renderItem={(p) => (
-            <PostCard
-              post={p.item}
-              onDelete={() => deletePostMutation.mutate(p.item.id)}
-            />
+          {session?.user ? (
+            <Text className="text-center text-2xl text-foreground">
+              {session && <span>Logged in as {session?.user?.name}</span>}
+            </Text>
+          ) : (
+            <Text className=" text-center text-2xl text-secondary-foreground">
+              Not logged in
+            </Text>
           )}
-        />
 
-        <CreatePost />
-      </View>
+          <Button
+            onPress={() => void utils.post.all.invalidate()}
+            title="Refresh posts"
+            color={"#f47272"}
+          />
+
+          <View className="py-2">
+            <Text className="font-semibold italic text-white">
+              Press on a post
+            </Text>
+          </View>
+
+          <FlashList
+            data={postQuery.data}
+            estimatedItemSize={20}
+            ItemSeparatorComponent={() => <View className="h-2" />}
+            renderItem={(p) => (
+              <PostCard
+                post={p.item}
+                onDelete={() => deletePostMutation.mutate(p.item.id)}
+              />
+            )}
+          />
+          <CreatePost />
+        </View>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 };
