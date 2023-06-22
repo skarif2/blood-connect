@@ -256,6 +256,9 @@ importers:
       eslint:
         specifier: ^8.42.0
         version: 8.42.0
+      i18next-resources-for-ts:
+        specifier: ^1.2.1
+        version: 1.2.1
       postcss:
         specifier: ^8.4.24
         version: 8.4.24
@@ -8495,6 +8498,13 @@ packages:
   /i18next-fs-backend@2.1.5:
     resolution: {integrity: sha512-7fgSH8nVhXSBYPHR/W3tEXXhcnwHwNiND4Dfx9knzPzdsWTUTL/TdDVV+DY0dL0asHKLbdoJaXS4LdVW6R8MVQ==}
     dev: false
+
+  /i18next-resources-for-ts@1.2.1:
+    resolution: {integrity: sha512-Z2FmlSJZRVUlmcqVnpoe2oxixawSYku2Ez7p1KRF3TsJAhW5JzcynKkeeqlw5Jn6MJHhOpXKvT3eK2UcWt2/aw==}
+    hasBin: true
+    dependencies:
+      '@babel/runtime': 7.22.5
+    dev: true
 
   /i18next@23.2.3:
     resolution: {integrity: sha512-5spO7L0rNmW0jFuNhz+gfirlFt1anle4mTy4+gFkgsH0+T3R5++4oncBrzeKa7v8pweRyGBoGmOpboqlxovg6A==}
