@@ -10,7 +10,8 @@
     "lint:fix": "pnpm lint --fix",
     "start": "pnpm with-env next start",
     "type-check": "tsc --noEmit",
-    "with-env": "dotenv -e ../../.env --"
+    "with-env": "dotenv -e ../../.env --",
+    "toc": "i18next-resources-for-ts toc -i ./public/locales/en -o ./@types/resources.ts"
   },
   "dependencies": {
     "@acme/api": "^0.1.0",
@@ -44,6 +45,7 @@
     "autoprefixer": "^10.4.14",
     "dotenv-cli": "^7.2.1",
     "eslint": "^8.42.0",
+    "i18next-resources-for-ts": "^1.2.1",
     "postcss": "^8.4.24",
     "tailwindcss": "^3.3.2",
     "typescript": "^5.1.3"

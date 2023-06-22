@@ -2,7 +2,7 @@ import { useState } from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
 import { signIn, signOut } from "next-auth/react";
-import { useTranslation } from "next-i18next";
+import { Trans, useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import {
@@ -91,7 +91,7 @@ const CreatePostForm: React.FC = () => {
 };
 
 const Home: NextPage = () => {
-  const { t } = useTranslation("common");
+  const { t } = useTranslation(["common"]);
   const postQuery = api.post.all.useQuery();
 
   const deletePostMutation = api.post.delete.useMutation({
@@ -108,9 +108,11 @@ const Home: NextPage = () => {
       <main className="flex h-screen flex-col items-center bg-background text-foreground">
         <div className="container mt-12 flex flex-col items-center justify-center gap-4 px-4 py-8">
           <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
-            {/* <span className="text-accent">Blood</span> Connect */}
-            {t("title")}
+            <Trans i18nKey="title">
+              <span className="text-accent">Blood</span> Connect
+            </Trans>
           </h1>
+          <h3 className="text-xl tracking-tighter">{t("subtitle")}</h3>
           <div className="flex items-center gap-2">
             <ThemeToggle />
             <LanguageToggle />
