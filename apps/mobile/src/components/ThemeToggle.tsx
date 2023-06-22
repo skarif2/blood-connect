@@ -1,15 +1,21 @@
 import React from "react";
-import { Pressable, Text } from "react-native";
+import { Pressable } from "react-native";
+import { Moon, Sun } from "lucide-react-native";
 import { useColorScheme } from "nativewind";
 
 export function ThemeToggle() {
   const { colorScheme, toggleColorScheme } = useColorScheme();
 
   return (
-    <Pressable onPress={toggleColorScheme}>
-      <Text selectable={false} className="text-foreground">
-        {colorScheme === "dark" ? "🌙" : "🌞"}
-      </Text>
+    <Pressable
+      onPress={toggleColorScheme}
+      className="flex h-8 w-8 items-center justify-center"
+    >
+      {colorScheme === "dark" ? (
+        <Moon size={20} color="white" />
+      ) : (
+        <Sun size={20} color="white" />
+      )}
     </Pressable>
   );
 }
