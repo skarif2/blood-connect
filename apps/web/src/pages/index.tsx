@@ -2,6 +2,8 @@ import { useState } from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
 import { signIn, signOut } from "next-auth/react";
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import {
   Button,
@@ -14,6 +16,7 @@ import {
 } from "@acme/ui";
 
 import { api, type RouterOutputs } from "~/utils/api";
+import { LanguageToggle } from "~/components/LanguageToggle";
 import { ThemeToggle } from "~/components/ThemeToggle";
 import { ThemeProvider } from "~/providers/theme";
 
@@ -88,6 +91,7 @@ const CreatePostForm: React.FC = () => {
 };
 
 const Home: NextPage = () => {
+  const { t } = useTranslation("common");
   const postQuery = api.post.all.useQuery();
 
   const deletePostMutation = api.post.delete.useMutation({
@@ -104,10 +108,15 @@ const Home: NextPage = () => {
       <main className="flex h-screen flex-col items-center bg-background text-foreground">
         <div className="container mt-12 flex flex-col items-center justify-center gap-4 px-4 py-8">
           <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
-            <span className="text-accent">Blood</span> Connect
+            {/* <span className="text-accent">Blood</span> Connect */}
+            {t("title")}
           </h1>
-          <ThemeToggle />
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+            <LanguageToggle />
+          </div>
           <AuthShowcase />
+
           <CreatePostForm />
           {postQuery.data ? (
             <div className="w-full max-w-2xl">
@@ -143,8 +152,6 @@ export default Home;
 const AuthShowcase: React.FC = () => {
   const { data: session } = api.auth.getSession.useQuery();
 
-  console.log("web sesstion", session);
-
   const { data: secretMessage } = api.auth.getSecretMessage.useQuery(
     undefined, // no input
     { enabled: !!session?.user },
@@ -167,3 +174,11 @@ const AuthShowcase: React.FC = () => {
     </div>
   );
 };
+
+export async function getStaticProps({ locale }: { locale: string }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common"])),
+    },
+  };
+}
