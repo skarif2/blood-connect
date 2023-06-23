@@ -83,6 +83,9 @@ importers:
       expo-linking:
         specifier: ~4.0.1
         version: 4.0.1(expo@48.0.19)
+      expo-localization:
+        specifier: ^14.1.1
+        version: 14.1.1(expo@48.0.19)
       expo-router:
         specifier: ^1.5.3
         version: 1.5.3(@types/react@18.2.8)(expo-constants@14.2.1)(expo-linking@4.0.1)(expo-modules-autolinking@1.2.0)(expo-status-bar@1.4.4)(expo@48.0.19)(metro@0.76.5)(react-dom@18.2.0)(react-native-gesture-handler@2.10.2)(react-native-safe-area-context@4.5.3)(react-native-screens@3.20.0)(react-native@0.71.8)(react@18.2.0)
@@ -92,6 +95,9 @@ importers:
       expo-status-bar:
         specifier: ~1.4.4
         version: 1.4.4
+      i18next:
+        specifier: ^23.2.3
+        version: 23.2.3
       lucide-react-native:
         specifier: ^0.248.0
         version: 0.248.0(prop-types@15.8.1)(react-native-svg@13.9.0)(react-native@0.71.8)(react@18.2.0)
@@ -104,6 +110,9 @@ importers:
       react-dom:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
+      react-i18next:
+        specifier: ^13.0.1
+        version: 13.0.1(i18next@23.2.3)(react-dom@18.2.0)(react-native@0.71.8)(react@18.2.0)
       react-native:
         specifier: 0.71.8
         version: 0.71.8(@babel/core@7.21.8)(@babel/preset-env@7.21.5)(react@18.2.0)
@@ -224,7 +233,7 @@ importers:
         version: 18.2.0(react@18.2.0)
       react-i18next:
         specifier: ^13.0.1
-        version: 13.0.1(i18next@23.2.3)(react-dom@18.2.0)(react@18.2.0)
+        version: 13.0.1(i18next@23.2.3)(react-dom@18.2.0)(react-native@0.71.8)(react@18.2.0)
       superjson:
         specifier: 1.9.1
         version: 1.9.1
@@ -7530,6 +7539,15 @@ packages:
       - supports-color
     dev: false
 
+  /expo-localization@14.1.1(expo@48.0.19):
+    resolution: {integrity: sha512-wmozyF82i6muCBWTX+atzqQv9JUjSbEQ0QKYg1Th4QX/qcVd+ajVjFUytSMzg/ME1vGUP1s+LN+SiZ98YokWWw==}
+    peerDependencies:
+      expo: '*'
+    dependencies:
+      expo: 48.0.19(@babel/core@7.21.8)
+      rtl-detect: 1.0.4
+    dev: false
+
   /expo-modules-autolinking@1.2.0:
     resolution: {integrity: sha512-QOPh/iXykNDCAzUual1imSrn2aDakzCGUp2QmxVREr0llajXygroUWlT9sQXh1zKzbNp+a+i/xK375ZeBFiNJA==}
     hasBin: true
@@ -11158,7 +11176,7 @@ packages:
       i18next-fs-backend: 2.1.5
       next: 13.4.4(@babel/core@7.22.1)(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
-      react-i18next: 13.0.1(i18next@23.2.3)(react-dom@18.2.0)(react@18.2.0)
+      react-i18next: 13.0.1(i18next@23.2.3)(react-dom@18.2.0)(react-native@0.71.8)(react@18.2.0)
     dev: false
 
   /next-mdx-remote@4.4.1(react-dom@18.2.0)(react@18.2.0):
@@ -12318,7 +12336,7 @@ packages:
       shallowequal: 1.1.0
     dev: false
 
-  /react-i18next@13.0.1(i18next@23.2.3)(react-dom@18.2.0)(react@18.2.0):
+  /react-i18next@13.0.1(i18next@23.2.3)(react-dom@18.2.0)(react-native@0.71.8)(react@18.2.0):
     resolution: {integrity: sha512-gMO6N2GfSfuH7xlHSsZ/mZf+Py9bLm/+EDKIn5fNTuDTjcCcwmMU5UEuGCDk5mdfivbo7ySyYXBN7B9tbGUxiA==}
     peerDependencies:
       i18next: '>= 23.2.3'
@@ -12336,6 +12354,7 @@ packages:
       i18next: 23.2.3
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
+      react-native: 0.71.8(@babel/core@7.21.8)(@babel/preset-env@7.21.5)(react@18.2.0)
     dev: false
 
   /react-is@16.13.1:
@@ -12932,6 +12951,10 @@ packages:
 
   /robust-predicates@3.0.2:
     resolution: {integrity: sha512-IXgzBWvWQwE6PrDI05OvmXUIruQTcoMDzRsOd5CDvHCVLcLHMTSYvOK5Cm46kWqlV3yAbuSpBZdJ5oP5OUoStg==}
+    dev: false
+
+  /rtl-detect@1.0.4:
+    resolution: {integrity: sha512-EBR4I2VDSSYr7PkBmFy04uhycIpDKp+21p/jARYXlCSjQksTBQcJ0HFUPOO79EPPH5JS6VAhiIQbycf0O3JAxQ==}
     dev: false
 
   /run-applescript@5.0.0:

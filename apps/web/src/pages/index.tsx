@@ -112,7 +112,7 @@ const Home: NextPage = () => {
               <span className="text-accent">Blood</span> Connect
             </Trans>
           </h1>
-          <h3 className="text-xl tracking-tighter">{t("subtitle")}</h3>
+          <h3 className="text-2xl tracking-tighter">{t("subtitle")}</h3>
           <div className="flex items-center gap-2">
             <ThemeToggle />
             <LanguageToggle />

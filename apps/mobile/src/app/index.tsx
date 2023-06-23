@@ -11,8 +11,10 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Stack, useRouter } from "expo-router";
 import { FlashList } from "@shopify/flash-list";
 import { Trash } from "lucide-react-native";
+import { Trans, useTranslation } from "react-i18next";
 
 import { api, type RouterOutputs } from "~/utils/api";
+import { LanguageToggle } from "~/components/LanguageToggle";
 import { ThemeToggle } from "~/components/ThemeToggle";
 
 const PostCard: React.FC<{
@@ -92,11 +94,10 @@ const CreatePost: React.FC = () => {
 };
 
 const Index = () => {
+  const { t } = useTranslation();
   const utils = api.useContext();
 
   const postQuery = api.post.all.useQuery();
-  const { data: session } = api.auth.getSession.useQuery();
-  console.log("mobile session", session);
 
   const deletePostMutation = api.post.delete.useMutation({
     onSettled: () => utils.post.all.invalidate(),
@@ -106,24 +107,26 @@ const Index = () => {
     <SafeAreaView className="h-full w-full bg-background">
       <Stack.Screen
         options={{
-          headerTitle: "Blood Connect",
-          headerRight: () => <ThemeToggle />,
+          headerTitleStyle: { color: "white" },
+          headerTitle: t("plain_title"),
+          headerRight: () => (
+            <>
+              <ThemeToggle />
+              <LanguageToggle />
+            </>
+          ),
         }}
       />
       <KeyboardAvoidingView>
         <View className="h-full w-full p-4">
-          <Text className="mx-auto pb-2 text-5xl font-bold text-foreground">
-            <Text className="text-accent">Blood</Text> Connect
+          <Text className="mx-auto pb-2 text-5xl font-bold tracking-tighter text-foreground">
+            <Trans i18nKey="title">
+              <Text className="text-accent">Blood</Text> Connect
+            </Trans>
           </Text>
-          {session?.user ? (
-            <Text className="text-center text-2xl text-foreground">
-              {session && <span>Logged in as {session?.user?.name}</span>}
-            </Text>
-          ) : (
-            <Text className=" text-center text-2xl text-secondary-foreground">
-              Not logged in
-            </Text>
-          )}
+          <Text className="mx-auto pb-4 text-xl tracking-tighter text-foreground">
+            {t("subtitle")}
+          </Text>
 
           <Button
             onPress={() => void utils.post.all.invalidate()}

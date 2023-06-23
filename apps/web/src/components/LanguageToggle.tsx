@@ -57,12 +57,4 @@ export function LanguageToggle() {
       </PopoverContent>
     </Popover>
   );
-  return (
-    <div className="">
-      LanguageToggle
-      <div className="flex gap-2">
-        {locales?.map((l) => push(pathname, undefined, { locale: l }))}
-      </div>
-    </div>
-  );
 }
