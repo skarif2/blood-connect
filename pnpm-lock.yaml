@@ -98,6 +98,9 @@ importers:
       i18next:
         specifier: ^23.2.3
         version: 23.2.3
+      intl-pluralrules:
+        specifier: ^2.0.0
+        version: 2.0.0
       lucide-react-native:
         specifier: ^0.248.0
         version: 0.248.0(prop-types@15.8.1)(react-native-svg@13.9.0)(react-native@0.71.8)(react@18.2.0)
@@ -8635,6 +8638,10 @@ packages:
 
   /intersection-observer@0.12.2:
     resolution: {integrity: sha512-7m1vEcPCxXYI8HqnL8CKI6siDyD+eIWSwgB3DZA+ZTogxk9I4CDnj4wilt9x/+/QbHI4YG5YZNmC6458/e9Ktg==}
+    dev: false
+
+  /intl-pluralrules@2.0.0:
+    resolution: {integrity: sha512-YlHi/pve75R2kyvGFyDvmL+zECVrEONSbdeGwXtDXHulvNgcmT1rhwyfMCX/BPzBRuW7b2Uu4oQqnYs7ti8WIA==}
     dev: false
 
   /invariant@2.2.4:

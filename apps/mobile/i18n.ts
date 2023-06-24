@@ -5,6 +5,8 @@ import { initReactI18next } from "react-i18next";
 import bn from "~/../assets/locales/bn.json";
 import en from "~/../assets/locales/en.json";
 
+import "intl-pluralrules";
+
 void i18n.use(initReactI18next).init({
   lng: Localization.locale,
   fallbackLng: "en",

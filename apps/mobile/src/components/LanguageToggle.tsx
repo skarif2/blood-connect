@@ -10,7 +10,7 @@ export function LanguageToggle() {
   return (
     <Pressable
       onPress={toggleLocale}
-      className="ml-2 flex h-8 items-center justify-center"
+      className="ml-2 flex h-8 w-14 items-center justify-center"
     >
       <Text className="text-l font-semibold text-white">
         {locale === "en" ? "বাংলা" : "English"}
