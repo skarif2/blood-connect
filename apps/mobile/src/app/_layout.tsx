@@ -17,7 +17,6 @@ const RootLayout = () => {
           The Stack component displays the current page.
           It also allows you to configure your screens 
         */}
-        {/* <I18nProvider> */}
         <I18nextProvider i18n={i18n} defaultNS={"translation"}>
           <Stack
             screenOptions={{
@@ -27,7 +26,6 @@ const RootLayout = () => {
             }}
           />
         </I18nextProvider>
-        {/* </I18nProvider> */}
         <StatusBar />
       </SafeAreaProvider>
     </TRPCProvider>

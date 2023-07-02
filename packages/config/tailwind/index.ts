@@ -1,16 +1,15 @@
 import type { Config } from "tailwindcss";
 import plugin from "tailwindcss/plugin";
 
-// Expo/React-Native doesn't have very good hsl support so using hex colors
 const themeLight = {
-  "--background": "hsl(0 0% 100%)",
-  "--foreground": "hsl(222 47% 11%)",
-  "--muted": "hsl(210 40% 96%)",
-  "--muted-foreground": "hsl(215 16% 47%)",
-  "--popover": "hsl(0 0% 100%)",
-  "--popover-foreground": "hsl(222 47% 11%)",
-  "--card": "hsl(0 0% 100%)",
-  "--card-foreground": "hsl(222 47% 11%)",
+  "--background": "#ffffff",
+  "--foreground": "#0f1729",
+  "--muted": "#f1f5f9",
+  "--muted-foreground": "#65758b",
+  "--popover": "#ffffff",
+  "--popover-foreground": "#0f1729",
+  "--card": "#ffffff",
+  "--card-foreground": "#0f1729",
   "--border": "#E2E8F0",
   "--input": "#E2E8F0",
   "--primary": "#0F172A",
@@ -25,14 +24,14 @@ const themeLight = {
 };
 
 const themeDark = {
-  "--background": "hsl(224 71% 4%)",
-  "--foreground": "hsl(213 31% 91%)",
-  "--muted": "hsl(223 47% 11%)",
-  "--muted-foreground": "hsl(215 16% 57%)",
-  "--popover": "hsl(224 71% 4%)",
-  "--popover-foreground": "hsl(215 20% 65%)",
-  "--card": "hsl(224 71% 4%)",
-  "--card-foreground": "hsl(213 31% 91%)",
+  "--background": "#030711",
+  "--foreground": "#e1e7ef",
+  "--muted": "#0f1629",
+  "--muted-foreground": "#808ea3",
+  "--popover": "#030711",
+  "--popover-foreground": "#94a3b8",
+  "--card": "#030711",
+  "--card-foreground": "#e1e7ef",
   "--border": "#1D283A",
   "--input": "#1D283A",
   "--primary": "#F8FAFC",

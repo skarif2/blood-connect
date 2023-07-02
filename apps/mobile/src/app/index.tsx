@@ -1,7 +1,7 @@
 import React from "react";
 import {
-  Button,
   KeyboardAvoidingView,
+  Platform,
   Text,
   TextInput,
   TouchableOpacity,
@@ -80,6 +80,7 @@ const CreatePost: React.FC = () => {
       )}
       <TouchableOpacity
         className="rounded bg-accent p-2"
+        activeOpacity={0.6}
         onPress={() => {
           mutate({
             title,
@@ -117,7 +118,10 @@ const Index = () => {
           ),
         }}
       />
-      <KeyboardAvoidingView>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        keyboardVerticalOffset={100}
+      >
         <View className="h-full w-full p-4">
           <Text className="mx-auto pb-2 text-5xl font-bold tracking-tighter text-foreground">
             <Trans i18nKey="title">
@@ -127,12 +131,15 @@ const Index = () => {
           <Text className="mx-auto pb-4 text-xl tracking-tighter text-foreground">
             {t("subtitle")}
           </Text>
-
-          <Button
+          <TouchableOpacity
+            className="mx-auto"
+            activeOpacity={0.6}
             onPress={() => void utils.post.all.invalidate()}
-            title="Refresh posts"
-            color={"#f47272"}
-          />
+          >
+            <Text className="text-xl font-semibold text-accent">
+              {t("buttons.refresh_posts")}
+            </Text>
+          </TouchableOpacity>
 
           <View className="py-2">
             <Text className="font-semibold italic text-white">
